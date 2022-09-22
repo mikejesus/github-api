@@ -1,13 +1,16 @@
 import { IQuery, IRequest } from "../interfaces/request.interface";
 import { octokit } from "../utils/octokit";
+import { redisClient } from "../utils/redis";
 
 export const getReposService = async (requestData: IRequest, query: IQuery) => {
+  //Make a network call and destructure the data response
   const { data } = await octokit.rest.repos.listForUser({
     username: requestData.organization,
     per_page: query.perPage,
     page: query.page,
   });
 
+  //Extract expected fields
   const result = data.map((item) => {
     return {
       repoName: item.full_name,
@@ -16,6 +19,7 @@ export const getReposService = async (requestData: IRequest, query: IQuery) => {
     };
   });
 
+  //format response object
   const finalResponse = {
     page: Number(query.page) ? Number(query.page) : 1,
     perPage: result.length,
@@ -23,22 +27,34 @@ export const getReposService = async (requestData: IRequest, query: IQuery) => {
   };
 
 
+  //Cache response
+  await redisClient.setEx(
+    `${requestData.organization}:${query.page || 1}:${query.perPage || result.length}`,
+    1440,
+    JSON.stringify(finalResponse)
+  );
+
+  //return response
   return finalResponse;
 };
 
 export const getRepoInfoService = async (data: IRequest) => {
-  const {
-    data: { full_name, description, stargazers_count },
-  } = await octokit.rest.repos.get({
+  //Make a network call and destructure the data response
+  const { data: { full_name, description, stargazers_count }, } = await octokit.rest.repos.get({
     owner: data.organization,
     repo: data.repoName,
   });
 
+  //format response object
   const finalResponse = {
     repoName: full_name,
     repoDescription: description,
     numberOfStars: stargazers_count,
   };
 
+  //Cache Response
+  await redisClient.setEx(full_name, 3600, JSON.stringify(finalResponse));
+
+  //Return response
   return finalResponse;
 };
