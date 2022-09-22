@@ -6,7 +6,10 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node build/server.js",
-    "dev": "ts-node-dev --respawn --transpile-only --exit-child src/server.ts"
+    "dev": "ts-node-dev --respawn --transpile-only --exit-child src/server.ts",
+    "lint": "eslint --ext .ts,.js src/**",
+    "lint-fix": "npm run lint -- --fix",
+    "prettier": "prettier \"**/*.+(ts|js|json)\" --write"
   },
   "keywords": [
     "github",
@@ -15,6 +18,12 @@
   "author": "Michael S. Olawuni",
   "license": "ISC",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
     "typescript": "^4.8.3"
   },
   "dependencies": {
