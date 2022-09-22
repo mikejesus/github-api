@@ -9,7 +9,11 @@
 
 ## About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+This a rest api for consuming github rest api using octokit.
+
+The goal of the api is to get the repo info of an organization/owner.
+
+You can get all the repos of an organization or get a detail of a particular repo
 
 ## Getting Started <a name = "getting_started"></a>
 
@@ -17,27 +21,25 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
-
-```
-Give examples
-```
+To get this app to run on your machine, you would need the following:
+i. Installation of node
+ii. Redis server
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
+After cloning or downloading the project files,
 
 ```
-Give the example
+Run npm install to install the packages
 ```
 
-And repeat
+```
+Run your redis server
+```
+To use redis from docker:
+Use the followin command below
+docker run -d --name <CONTAINER_NAME> -p 127.0.0.1:6379:6379 redis
 
-```
-until finished
-```
 
 End with an example of getting some data out of the system or using it for a little demo.
 
