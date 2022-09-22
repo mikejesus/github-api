@@ -1,7 +1,6 @@
 import { IQuery, IRequest } from "../interfaces/request.interface";
 import { octokit } from "../utils/octokit";
 
-
 export const getReposService = async (requestData: IRequest, query: IQuery) => {
   const { data } = await octokit.rest.repos.listForUser({
     username: requestData.organization,
@@ -39,7 +38,6 @@ export const getRepoInfoService = async (data: IRequest) => {
     repoDescription: description,
     numberOfStars: stargazers_count,
   };
-
 
   return finalResponse;
 };

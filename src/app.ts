@@ -17,7 +17,7 @@ app.use(morgan("dev"));
 app.use("/api/v1/github/repo/info", router);
 
 app.use("*", (req, res) => {
-    throw new NotFoundError(`${req.method} ${req.originalUrl}`);
+  throw new NotFoundError(`${req.method} ${req.originalUrl}`);
 });
 
 app.use(errorHandler);

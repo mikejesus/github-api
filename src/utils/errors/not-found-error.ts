@@ -1,13 +1,13 @@
 import ErrorException from "./http-exceptions";
 
 class NotFoundError extends ErrorException {
-    resource: string;
+  resource: string;
 
-    constructor(resource: string) {
-        super(`Route '${resource}' Not Found`, 404, null);
+  constructor(resource: string) {
+    super(`Route '${resource}' Not Found`, 404, null);
 
-        this.resource = resource;
-    }
+    this.resource = resource;
+  }
 }
 
 export default NotFoundError;
