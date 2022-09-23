@@ -10,7 +10,21 @@ const options: swaggerJsdoc.Options = {
         info: {
             title: "Github Rest API Docs",
             version: "1.0"
-        }
+        },
+        components: {
+            securitySchemas: {
+                bearerAuth: {
+                    type: "http",
+                    scheme: "bearer",
+                    bearerFormat: "JWT"
+                }
+            }
+        },
+        security: [
+            {
+                bearerAuth: []
+            }
+        ]
     },
 
     apis: ["./src/routes/github.route.ts"]
