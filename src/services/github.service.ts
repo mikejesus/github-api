@@ -4,7 +4,6 @@ import { octokit } from "../utils/octokit";
 import { redisClient } from "../utils/redis";
 
 export const getReposService = async (requestData: IRequest, query: IQuery) => {
-  
 
   if (typeof query.page === 'string' || typeof query.perPage === 'string') {
     throw new Error('query parameter must be a number')
