@@ -12,6 +12,16 @@ const options: swaggerJsdoc.Options = {
             version: "1.0"
         }
     },
+    components: {
+        securitySchemes: {
+            bearerAuth: {
+                type: 'http',
+                scheme: 'bearer',
+                bearerFormat: "JWT"
+            }
+        }
+    },
+
     apis: ["./src/routes/github.route.ts"]
 
 };
