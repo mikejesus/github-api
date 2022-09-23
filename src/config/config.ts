@@ -4,7 +4,7 @@ dotenv.config();
 
 export const APP_PORT = process.env.PORT;
 
-export const GITHUB_AUTH_KEY = process.env.AUTH_KEY;
+export const GITHUB_AUTH_KEY = process.env.AUTH_KEY || "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";
 
 export const NODE_ENV = process.env.NODE_ENV || "development";
 

@@ -1,10 +1,11 @@
 import { Octokit } from "@octokit/rest";
 import { throttling } from "@octokit/plugin-throttling";
+import { GITHUB_AUTH_KEY } from "../config/config";
 
 const MyOctokit = Octokit.plugin(throttling);
 export const octokit = new MyOctokit({
   // auth: process.env.AUTH_KEY,
-  auth: "token " + process.env.AUTH_KEY,
+  auth: GITHUB_AUTH_KEY,
   throttle: {
     onRateLimit: (retryAfter: any, options: { method: any; url: any; request: { retryCount: number } }) => {
       octokit.log.warn(`Request quota exhausted for request ${options.method} ${options.url}`);
