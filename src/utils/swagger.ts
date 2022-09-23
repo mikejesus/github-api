@@ -10,22 +10,7 @@ const options: swaggerJsdoc.Options = {
         info: {
             title: "Github Rest API Docs",
             version: "1.0"
-        },
-        components: {
-            securitySchemas: {
-              ApiKeyAuth: {
-                type: "apiKey",
-                in: "header",
-                name: "X-API-Key"
-                }
-
-            }
-        },
-        security: [
-            {
-                apiKeyAuth: []
-            }
-        ]
+        }
     },
 
     apis: ["./src/routes/github.route.ts"]
@@ -45,7 +30,6 @@ const swaggerDocs = (app: Express, port: number) => {
 
         res.send(swaggerSpec)
     });
-
     console.info(`API Docs available at http://localhost:${port}/docs/github`)
 }
 
