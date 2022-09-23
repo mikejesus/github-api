@@ -1,7 +1,7 @@
 import { Express, Request, Response } from 'express';
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express"
-import { version } from "../../package.json";
+
 
 
 const options: swaggerJsdoc.Options = {
@@ -9,7 +9,7 @@ const options: swaggerJsdoc.Options = {
         openapi: "3.0.0",
         info: {
             title: "Github Rest API Docs",
-            version
+            version: "1.0"
         }
     },
     apis: ["./src/routes/github.route.ts"]
