@@ -40,7 +40,7 @@ const swaggerDocs = (app: Express, port: number) => {
 
     //Docs in Json Format
     app.get('docs.json', (req: Request, res: Response) => {
-        res.setHeader('Content-Type', 'application/json')
+        res.setHeader('Content-Type', 'application/vnd.github+json')
 
         res.send(swaggerSpec)
     });
