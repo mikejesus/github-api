@@ -2,6 +2,7 @@ import { APP_PORT } from "./config/config";
 import app from "./app";
 import { redisClient } from "./utils/redis";
 
+
 const server = app.listen(APP_PORT, async () => {
   await redisClient.connect();
   console.log("Listening on port", APP_PORT);

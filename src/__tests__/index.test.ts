@@ -13,10 +13,10 @@ const repoInfo = {
 
 //mock octokit
 jest.mock("../utils/octokit");
-
+jest.mock("../utils/redis");
 const mockOctokit = jest.mocked(octokit);
 
-describe("Github Organization or Owner Repo",  () => {
+describe("Github Organization or Owner Repo", () => {
     //Clear all mocks after each test case
     afterEach(() => {
         jest.clearAllMocks();

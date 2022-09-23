@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { getRepoInfoService, getReposService } from "../services/github.service";
+import { getRepoInfoService, getReposService } from "../services/github.service"
+
 
 export const getReposController = async (req: Request, res: Response) => {
   try {
@@ -8,6 +9,7 @@ export const getReposController = async (req: Request, res: Response) => {
       organization,
       repoName: "",
     };
+
 
     const response = await getReposService(data, req.query);
 
@@ -18,7 +20,7 @@ export const getReposController = async (req: Request, res: Response) => {
   } catch (error) {
     console.log(error)
     res.status(404).json({
-      message: "Could not retrieve record",
+      message: "No record(s) found",
     });
   }
 };
@@ -38,7 +40,7 @@ export const getRepoInfoController = async (req: Request, res: Response) => {
     });
   } catch (error) {
     res.status(404).json({
-      message: "Could not retrieve records",
+      message: "No record(s) found",
     });
   }
 };

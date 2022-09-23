@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export const APP_PORT = process.env.PORT || 5200;
+export const APP_PORT = process.env.PORT;
 
 export const GITHUB_AUTH_KEY = process.env.AUTH_KEY;
 

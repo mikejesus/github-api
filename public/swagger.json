@@ -1,0 +1,29 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "github-api",
+		"version": "1.0.0",
+		"description": "An api that consumes github rest api and display repo name, repo description and number of stars for an owner/organization",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "Michael S. Olawuni"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
