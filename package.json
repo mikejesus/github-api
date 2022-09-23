@@ -4,7 +4,7 @@
   "description": "An api that consumes github rest api and display repo name, repo description and number of stars for an owner/organization",
   "main": "server.js",
   "scripts": {
-    "build": "rimraf ./build && tsc",
+    "build": "tsc",
     "start": "node build/server.js",
     "dev": "ts-node-dev --respawn --transpile-only --exit-child src/server.ts",
     "lint": "eslint --ext .ts,.js src/**",
