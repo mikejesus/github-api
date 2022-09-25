@@ -9,7 +9,7 @@ const router = Router();
  *   get:
  *     tags:
  *       - Owner
- *     summary: Get all repos that belongs to an owner or organization
+ *     description: Get all repos that belongs to an owner or organization
  *     parameters: 
  *     - name: organization
  *       in: path
@@ -19,6 +19,11 @@ const router = Router();
  *       in: query
  *       description: Page Number
  *       schema:
+ *         type: integer
+ *     - name: perPage
+ *       in: query
+ *       description: Number of records per page
+ *       schema: 
  *         type: integer
  *     responses:  
  *       200: 
@@ -36,7 +41,7 @@ router.get("/:organization", cacheRequest, getReposController
  *   get:
  *     tags:
  *       - RepoInfo 
- *     summary: Get a repos info by supplying repo name in the form 'owner/repo'
+ *     description: Get a repos info by supplying repo name in the form 'owner/repo'
  *     parameters: 
  *     - name: organization
  *       in: path

@@ -11,12 +11,14 @@ const cacheRequest = async (req: Request, res: Response, next: NextFunction) => 
     //Get data using cache key
     const data = await redisClient.get(cacheKey);
 
+    //Retrieve record
     if (data) {
         res.status(200).json({
             message: "Records retrieved successfully",
             data: JSON.parse(data),
         });
     } else {
+        //Else go to the next call
         return next();
     }
 };

@@ -1,16 +1,12 @@
-import { IResponse } from "src/interfaces/response.interface";
 import { IQuery, IRequest } from "../interfaces/request.interface";
 import { octokit } from "../utils/octokit";
 import { redisClient } from "../utils/redis";
 
 export const getReposService = async (requestData: IRequest, query: IQuery) => {
 
+  //Validate request query
   if (typeof query.page === 'string' || typeof query.perPage === 'string') {
     throw new Error('query parameter must be a number')
-  }
-
-  if (!requestData.organization) {
-    throw new Error('You must supply an owner or organization name')
   }
 
   //Make a network call and destructure the data response
@@ -23,7 +19,7 @@ export const getReposService = async (requestData: IRequest, query: IQuery) => {
 
 
   //Extract expected fields
-  const result = data.map((item: IResponse) => {
+  const result = data.map((item) => {
     return {
       repoName: item.full_name,
       repoDescription: item.description,
@@ -49,6 +45,8 @@ export const getReposService = async (requestData: IRequest, query: IQuery) => {
   //return response
   return finalResponse;
 };
+
+
 
 export const getRepoInfoService = async (data: IRequest) => {
   //Make a network call and destructure the data response

@@ -9,8 +9,8 @@ const options: swaggerJsdoc.Options = {
         openapi: "3.0.0",
         info: {
             title: "Github Rest API Docs",
-            version: "1.0"
-        }
+            version: "1.0.0"
+        },
     },
 
     apis: ["./src/routes/github.route.ts"]

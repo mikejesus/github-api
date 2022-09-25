@@ -4,7 +4,6 @@ import { GITHUB_AUTH_KEY } from "../config/config";
 
 const MyOctokit = Octokit.plugin(throttling);
 export const octokit = new MyOctokit({
-  // auth: process.env.AUTH_KEY,
   auth: GITHUB_AUTH_KEY,
   throttle: {
     onRateLimit: (retryAfter: any, options: { method: any; url: any; request: { retryCount: number } }) => {
