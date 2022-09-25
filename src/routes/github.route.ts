@@ -1,16 +1,18 @@
 import { Router } from "express";
+import validate from "src/middlewares/validateRequest";
+import { organizationRepoSchema, organizationSchema } from "src/utils/schema";
 import { getReposController, getRepoInfoController } from "../controllers/github.controller";
 import cacheRequest from "../middlewares/cacheRequest";
 const router = Router();
 
-/** 
- * @openapi 
+/**
+ * @openapi
  * /api/v1/github/repo/info/{organization}:
  *   get:
  *     tags:
  *       - Owner
  *     description: Get all repos that belongs to an owner or organization
- *     parameters: 
+ *     parameters:
  *     - name: organization
  *       in: path
  *       description: The organization or owner of the repository
@@ -23,39 +25,36 @@ const router = Router();
  *     - name: perPage
  *       in: query
  *       description: Number of records per page
- *       schema: 
+ *       schema:
  *         type: integer
- *     responses:  
- *       200: 
- *         description: Success  
- *   
+ *     responses:
+ *       200:
+ *         description: Success
+ *
  */
-router.get("/:organization", cacheRequest, getReposController
-);
+router.get("/:organization", validate(organizationSchema), cacheRequest, getReposController);
 
-
-
-/** 
- * @openapi 
+/**
+ * @openapi
  * /api/v1/github/repo/info/{organization}/{repoName}:
  *   get:
  *     tags:
- *       - RepoInfo 
+ *       - RepoInfo
  *     description: Get a repos info by supplying repo name in the form 'owner/repo'
- *     parameters: 
+ *     parameters:
  *     - name: organization
  *       in: path
- *       description: The organization or owner of the repository 
+ *       description: The organization or owner of the repository
  *       required: true
  *     - name: repoName
  *       in: path
  *       description: The repo name of an owner or organization
  *       required: true
- *     responses:  
- *       200: 
- *         description: Success  
- *   
+ *     responses:
+ *       200:
+ *         description: Success
+ *
  */
-router.get("/:organization/:repoName", cacheRequest, getRepoInfoController);
+router.get("/:organization/:repoName", validate(organizationRepoSchema), cacheRequest, getRepoInfoController);
 
 export { router as githubRouter };
