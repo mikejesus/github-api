@@ -2,7 +2,7 @@ import express from "express";
 import "express-async-errors";
 import compression from "compression";
 import morgan from "morgan";
-import { errorHandler } from "./middlewares/error-handler";
+import { errorHandler } from "./middlewares/errorHandler";
 import NotFoundError from "./utils/errors/not-found-error";
 import router from "./routes";
 import swaggerDocs from "./utils/swagger";

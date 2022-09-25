@@ -4,11 +4,6 @@ import { redisClient } from "../utils/redis";
 
 export const getReposService = async (requestData: IRequest, query: IQuery) => {
 
-  //Validate request query
-  if (typeof query.page === 'string' || typeof query.perPage === 'string') {
-    throw new Error('query parameter must be a number')
-  }
-
   //Make a network call and destructure the data response
   const { data } = await octokit.rest.repos.listForUser({
     username: requestData.organization,

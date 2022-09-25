@@ -1,6 +1,6 @@
 import { Router } from "express";
-import validate from "src/middlewares/validateRequest";
-import { organizationRepoSchema, organizationSchema } from "src/utils/schema";
+import validate from "./../middlewares/validateRequest";
+import { organizationRepoSchema, organizationSchema } from "./../utils/schema";
 import { getReposController, getRepoInfoController } from "../controllers/github.controller";
 import cacheRequest from "../middlewares/cacheRequest";
 const router = Router();
